@@ -1,0 +1,39 @@
+/* Effect by Arnaul Delante (used for design purposes) */
+/* Reference Link -> https://codepen.io/Axiol/pen/QWLRMVr */
+/* Adapted for TailwindCSS */
+
+.container{
+    @apply relative inline-block bg-brand-default outline-none;
+}
+
+.container:after, .container:before{
+    @apply content-[''] block bg-brand-default w-8 h-8 absolute transition-all;
+}
+
+.container:before{
+    @apply top-0 left-0 origin-top-left -rotate-45 scale-0;
+}
+
+.container:after{
+    @apply bottom-0 right-0 origin-bottom-right rotate-45 scale-0;
+}
+
+.container img{
+    @apply block translate-x-0 translate-y-0 relative z-10;
+}
+
+.container:focus img{
+    @apply ring-2 ring-offset-2 ring-brand-default;
+}
+
+.container:hover img, .container:focus img{
+    @apply translate-x-6 -translate-y-6;
+}
+
+.container:hover:before, .container:focus:before{
+    @apply -rotate-45 scale-100;
+}
+
+.container:hover:after, .container:focus:after{
+    @apply rotate-45 scale-100;
+}
