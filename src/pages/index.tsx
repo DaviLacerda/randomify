@@ -6,13 +6,14 @@ import { useEffect, useState } from "react";
 import axios from "axios";
 import { suggestion } from "../types/suggestion";
 import { SuggestionList } from "../components/SuggestionList";
-import Link from "next/link";
+import { useRouter } from "next/router";
 import { api_key } from "../utils/apikey";
 
 const Home: NextPage = () => {
     const [input, setInput] = useState<string>("");
     const [idSelected, setIdSelected] = useState<number | null>(null);
     const [suggestions, setSuggestions] = useState<suggestion[]>([]);
+    const router = useRouter();
 
     const searchContent = async () => {
         let time:any = null;
@@ -81,12 +82,9 @@ const Home: NextPage = () => {
                         type="button"
                         disabled={!idSelected}
                         className="disabled:cursor-not-allowed group"
+                        onClick={() => router.push(`/${idSelected}`)}
                     >
-                        <Link href={`/${idSelected}`} rel="noopener noreferrer">
-                            <a>
-                                <AiOutlineRight className="fill-brand-default w-8 h-10 hover:brightness-90 group-disabled:brightness-50" />
-                            </a>
-                        </Link>
+                        <AiOutlineRight className="fill-brand-default w-8 h-10 hover:brightness-90 group-disabled:brightness-50" />
                     </button>
                 </div>
             </div>
