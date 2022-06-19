@@ -1,9 +1,11 @@
 import { IoIosRefresh } from 'react-icons/io';
-import Router from 'next/router';
+import { useRouter } from 'next/router';
 
 export function RefreshButton(){
+    const router = useRouter();
+    
     const reloadPage = () => {
-        Router.reload();
+        router.reload();
     }
 
     return (
