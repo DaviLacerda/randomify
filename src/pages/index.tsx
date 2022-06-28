@@ -2,21 +2,25 @@ import type { NextPage } from "next";
 import Head from "next/head";
 import { Logo } from "../components/Logo";
 import { AiOutlineRight } from "react-icons/ai";
+import { FaSpinner } from "react-icons/fa";
 import { useEffect, useState } from "react";
 import axios from "axios";
 import { suggestion } from "../types/suggestion";
 import { SuggestionList } from "../components/SuggestionList";
 import { useRouter } from "next/router";
 import { api_key } from "../utils/apikey";
+import { CleanFieldButton } from "../components/CleanFieldButton";
 
 const Home: NextPage = () => {
     const [input, setInput] = useState<string>("");
     const [idSelected, setIdSelected] = useState<number | null>(null);
     const [suggestions, setSuggestions] = useState<suggestion[]>([]);
+    const [isLoading, setIsLoading] = useState<boolean>(false);
     const router = useRouter();
 
     const searchContent = async () => {
-        let time:any = null;
+        setIsLoading(true);
+        let time: any = null;
 
         clearTimeout(time);
 
@@ -27,10 +31,11 @@ const Home: NextPage = () => {
                 );
                 let results = response.data.results;
                 setSuggestions(results);
+                setIsLoading(false);
             } catch (error) {
                 console.log(error);
             }
-        },1000)
+        }, 2000);
     };
 
     const handleSuggestion = (suggestion: suggestion) => {
@@ -38,12 +43,17 @@ const Home: NextPage = () => {
         setInput(suggestion.name);
     };
 
+    const cleanField = () => {
+        setInput("");
+        setIdSelected(null);
+        setSuggestions([]);
+    }
+
     useEffect(() => {
         if (input === "") {
             setIdSelected(0);
             setSuggestions([]);
-        }
-        else{
+        } else {
             searchContent();
         }
     }, [input]);
@@ -73,9 +83,20 @@ const Home: NextPage = () => {
                         value={input}
                         onChange={(e) => setInput(e.target.value)}
                     />
-                    <div className="absolute top-full left-0 w-full h-fit flex flex-col items-center justify-center gap-2">
+                    { input && <CleanFieldButton onCleanField={cleanField} /> }
+                    <div className="absolute top-full left-0 w-full h-fit border-red-500 flex flex-col items-center justify-center gap-2">
                         {input && (
-                            <SuggestionList isOnScreen={!!suggestions && !idSelected} suggestions={suggestions} onHandleSuggestion={handleSuggestion} />
+                            isLoading && !idSelected ? (
+                                <div className="w-full bg-zinc-800 py-4 flex justify-center rounded-b">
+                                    <FaSpinner className="h-4 w-4 fill-brand-default animate-spin" />
+                                </div>
+                            ) : (
+                                <SuggestionList
+                                    isOnScreen={!!suggestions && !idSelected}
+                                    suggestions={suggestions}
+                                    onHandleSuggestion={handleSuggestion}
+                                />
+                            )
                         )}
                     </div>
                     <button

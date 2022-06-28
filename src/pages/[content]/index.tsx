@@ -41,7 +41,7 @@ export default function Content({ data }: IdProps) {
                             {data.details.season}º Season -{" "}
                             {data.details.episode}º Episode
                         </small>
-                        <p className="w-full text-xl mb-8">
+                        <p className="w-full text-xl mb-8 leading-relaxed text-zinc-300">
                             {data.details.description}
                         </p>
                     </div>
