@@ -1,5 +1,5 @@
 import axios from "axios";
-import { GetStaticProps } from "next";
+import { GetServerSideProps } from "next";
 import styles from "../../styles/twitchEffect.module.css";
 import Head from "next/head";
 import { Header } from "../../components/Header";
@@ -82,14 +82,7 @@ export default function Content({ data }: IdProps) {
     );
 }
 
-export const getStaticPaths = () => {
-    return {
-        paths: [],
-        fallback: "blocking",
-    };
-};
-
-export const getStaticProps: GetStaticProps = async ({ params }) => {
+export const getServerSideProps: GetServerSideProps = async ({ params }) => {
     const { content } = params as any;
 
     const { data } = await axios.get(
