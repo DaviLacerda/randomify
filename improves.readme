@@ -1,0 +1,17 @@
+# Improves
+
+** ERROR 500????
+
+## Home 
+// to improve
+// 1. use debounce ( https://www.treinaweb.com.br/blog/o-que-e-debounce-e-qual-sua-importancia-para-a-performance ) -done-
+// 2. use useEffect to fetch data ??
+// 3. suggestion list as a component ? maybe -done-
+// 4. img preview ?? -done-
+
+## Content
+
+* Refresh button -done-
+* Design
+* Responsive Design
+* Error Page??

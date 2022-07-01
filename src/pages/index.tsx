@@ -47,7 +47,7 @@ const Home: NextPage = () => {
         setInput("");
         setIdSelected(null);
         setSuggestions([]);
-    }
+    };
 
     useEffect(() => {
         if (input === "") {
@@ -83,9 +83,11 @@ const Home: NextPage = () => {
                         value={input}
                         onChange={(e) => setInput(e.target.value)}
                     />
-                    { input && <CleanFieldButton onCleanField={cleanField} /> }
+                    {!!idSelected && (
+                        <CleanFieldButton onCleanField={cleanField} />
+                    )}
                     <div className="absolute top-full left-0 w-full h-fit border-red-500 flex flex-col items-center justify-center gap-2">
-                        {input && (
+                        {/* {input && (
                             isLoading && !idSelected ? (
                                 <div className="w-full bg-zinc-800 py-4 flex justify-center rounded-b">
                                     <FaSpinner className="h-4 w-4 fill-brand-default animate-spin" />
@@ -97,6 +99,24 @@ const Home: NextPage = () => {
                                     onHandleSuggestion={handleSuggestion}
                                 />
                             )
+                        )} */}
+                        {isLoading ? (
+                            <div className="w-full bg-zinc-800 py-4 flex justify-center rounded-b">
+                                <FaSpinner className="h-4 w-4 fill-brand-default animate-spin" />
+                            </div>
+                        ) : (
+                            input &&
+                            (suggestions.length !== 0 ? (
+                                <SuggestionList
+                                    isOnScreen={!!suggestions && !idSelected}
+                                    suggestions={suggestions}
+                                    onHandleSuggestion={handleSuggestion}
+                                />
+                            ) : (
+                                <div className="w-full bg-zinc-800 py-4 flex justify-center rounded-b">
+                                    <span>Not found!</span>
+                                </div>
+                            ))
                         )}
                     </div>
                     <button
