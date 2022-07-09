@@ -2,7 +2,7 @@
 
 ![Randomify Mockup](https://github.com/DaviLacerda/portfolio/blob/main/public/mockups/randomify-mockup.jpeg)
 
-I'm a big fan from Disney. When i subscribe´d in Disney+ service, i said for me, one day i'll recreate that. Obviously, is not perfect like the original, but i think this is pretty good!
+A project that came up with a personal hobby of watching random episodes of some series.
 
 # Technologies 👾
 
