@@ -25,8 +25,8 @@ A project that came up with a personal hobby of watching random episodes of some
 Clone the project on your computer and see how it works
 
 ```
-  git clone https://github.com/DaviLacerda/disneyplus-nextjs.git
-  cd disneyplus-nextjs
+  git clone https://github.com/DaviLacerda/randomify.git
+  cd randomify
 ```
 
 After that, to run project, run this commands:
