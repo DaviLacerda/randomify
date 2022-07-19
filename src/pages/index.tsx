@@ -22,20 +22,20 @@ const Home: NextPage = () => {
         setIsLoading(true);
         let time: any = null;
 
+        try {
+            const response = await axios.get(
+                `https://api.themoviedb.org/3/search/tv?api_key=${api_key}&page=1&query=${input}&include_adult=false`
+            );
+            let results = response.data.results;
+            setSuggestions(results);
+        } catch (error) {
+            console.log(error);
+        }
         clearTimeout(time);
 
         time = setTimeout(async () => {
-            try {
-                const response = await axios.get(
-                    `https://api.themoviedb.org/3/search/tv?api_key=${api_key}&page=1&query=${input}&include_adult=false`
-                );
-                let results = response.data.results;
-                setSuggestions(results);
-                setIsLoading(false);
-            } catch (error) {
-                console.log(error);
-            }
-        }, 2000);
+            setIsLoading(false);
+        }, 3000);
     };
 
     const handleSuggestion = (suggestion: suggestion) => {
