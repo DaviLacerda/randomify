@@ -66,7 +66,7 @@ export default function Name({ data }: NameProps) {
 }
 
 export const getServerSideProps: GetServerSideProps<{data: Data}> = async ({ params }) => {
-    const { name } = params;
+    const { name }:any = params;
 
     const res = await api.get(
         `search/tv?api_key=${api_key}&query=${name}&include_adult=false`
