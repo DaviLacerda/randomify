@@ -74,7 +74,7 @@ export const getServerSideProps: GetServerSideProps<{data: Data}> = async ({ par
 
     const { results } = res.data;
 
-    const matchedResult = results.find((result) => {
+    const matchedResult = results.find((result:any) => {
         return result.name.toLowerCase() === name.toLowerCase();
     });
 
