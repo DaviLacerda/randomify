@@ -1,6 +1,6 @@
 # Randomify | Enjoy without knowing how
 
-![Randomify Mockup](https://github.com/DaviLacerda/portfolio/blob/main/public/mockups/randomify-mockup.jpeg)
+![Randomify Mockup](https://github.com/DaviLacerda/randomify/blob/main/public/assets/readme-banner.png)
 
 A project that came up with a personal hobby of watching random episodes of some series.
 
