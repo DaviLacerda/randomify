@@ -36,7 +36,6 @@ After that, to run project, run this commands:
   yarn install
   yarn start
 ```
-<p align="center">  <i>or</i> </p>
 
 ##### npm
 ```
